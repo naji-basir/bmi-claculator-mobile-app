@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F7FA"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center_horizontal">
+
+        <!-- App title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BMI Calculator"
+            android:textColor="#172554"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:layout_marginTop="24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Calculate your Body Mass Index"
+            android:textColor="#64748B"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="32dp" />
+
+        <!-- Weight label -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Weight"
+            android:textColor="#334155"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <!-- Weight input and unit selection -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="24dp">
+
+            <EditText
+                android:id="@+id/etWeight"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Enter weight"
+                android:inputType="numberDecimal"
+                android:padding="12dp"
+                android:singleLine="true"
+                android:textColor="#172554"
+                android:backgroundTint="#2563EB" />
+
+            <Spinner
+                android:id="@+id/spWeightUnit"
+                android:layout_width="100dp"
+                android:layout_height="48dp"
+                android:entries="@array/weight_units"
+                android:spinnerMode="dropdown"
+                android:layout_marginStart="12dp" />
+
+        </LinearLayout>
+
+        <!-- Height label -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Height"
+            android:textColor="#334155"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <!-- Height input and unit selection -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="28dp">
+
+            <EditText
+                android:id="@+id/etHeight"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Enter height"
+                android:inputType="numberDecimal"
+                android:padding="12dp"
+                android:singleLine="true"
+                android:textColor="#172554"
+                android:backgroundTint="#2563EB" />
+
+            <Spinner
+                android:id="@+id/spHeightUnit"
+                android:layout_width="100dp"
+                android:layout_height="48dp"
+                android:entries="@array/height_units"
+                android:spinnerMode="dropdown"
+                android:layout_marginStart="12dp" />
+
+        </LinearLayout>
+
+        <!-- Calculate button -->
+        <Button
+            android:id="@+id/btnCalculate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Calculate BMI"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:padding="12dp"
+            android:backgroundTint="#2563EB" />
+
+        <!-- Result section -->
+        <TextView
+            android:id="@+id/tvResultTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your BMI Result"
+            android:textColor="#172554"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginTop="36dp" />
+
+        <TextView
+            android:id="@+id/tvBMI"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="--"
+            android:textColor="#2563EB"
+            android:textSize="44sp"
+            android:textStyle="bold"
+            android:layout_marginTop="12dp" />
+
+        <TextView
+            android:id="@+id/tvCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enter your details to begin"
+            android:textColor="#64748B"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp" />
+
+        <!-- Validation range information -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Accepted ranges: Weight 3–150 kg | Height 30–220 cm"
+            android:textColor="#94A3B8"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:layout_marginTop="32dp" />
+
+    </LinearLayout>
+
+</ScrollView>

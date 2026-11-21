@@ -1,6 +1,4 @@
-
 package com.basir.bmicalaculator;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -39,8 +37,6 @@ public class MainActivity extends AppCompatActivity {
         spWeightUnit = findViewById(R.id.spWeightUnit);
         spHeightUnit = findViewById(R.id.spHeightUnit);
 
-        tvBMI = findViewById(R.id.tvBMI);
-        tvCategory = findViewById(R.id.tvCategory);
 
         btnCalculate = findViewById(R.id.btnCalculate);
 
@@ -52,13 +48,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
     private void calculateBMI() {
 
         String weightInput = etWeight.getText().toString().trim();
         String heightInput = etHeight.getText().toString().trim();
 
-        // Check empty inputs
         if (weightInput.isEmpty() || heightInput.isEmpty()) {
             showError("Please enter both weight and height.");
             return;
@@ -69,9 +63,9 @@ public class MainActivity extends AppCompatActivity {
             double weight = Double.parseDouble(weightInput);
             double height = Double.parseDouble(heightInput);
 
-            // Check positive values
-            if (weight <= 0 || height <= 0) {
-                showError("Values must be greater than zero.");
+            if (!Double.isFinite(weight) || !Double.isFinite(height)
+                    || weight <= 0 || height <= 0) {
+                showError("Please enter valid positive numbers.");
                 return;
             }
 
@@ -79,57 +73,51 @@ public class MainActivity extends AppCompatActivity {
             String weightUnit = spWeightUnit.getSelectedItem().toString();
 
             if (weightUnit.equals("lb")) {
-                weight = weight * 0.45359237;
+                weight *= 0.45359237;
             }
 
             // Convert height to centimeters
             String heightUnit = spHeightUnit.getSelectedItem().toString();
 
             if (heightUnit.equals("inch")) {
-                height = height * 2.54;
+                height *= 2.54;
             }
 
-            // Validate weight range
-            if (weight < MIN_WEIGHT || weight > MAX_WEIGHT) {
+            // Validate weight
+            if (weight < 3 || weight > 150) {
                 showError("Weight must be between 3 and 150 kg.");
                 return;
             }
 
-            // Validate height range
-            if (height < MIN_HEIGHT || height > MAX_HEIGHT) {
+            // Validate height
+            if (height < 30 || height > 220) {
                 showError("Height must be between 30 and 220 cm.");
                 return;
             }
 
-            // Convert height from centimeters to meters
+            // Convert centimeters to meters
             double heightInMeters = height / 100.0;
 
             // Calculate BMI
-            double bmi = weight /
-                    (heightInMeters * heightInMeters);
+            double bmi = weight / (heightInMeters * heightInMeters);
 
-            // Display BMI
-            tvBMI.setText(String.format(Locale.US, "%.2f", bmi));
+            // Open result screen and pass calculated data
+            android.content.Intent intent =
+                    new android.content.Intent(
+                            MainActivity.this,
+                            ResultActivity.class
+                    );
 
-            // Determine BMI category
-            String category;
+            intent.putExtra("BMI", bmi);
+            intent.putExtra("HEIGHT", height);
 
-            if (bmi < 18.5) {
-                category = "Underweight";
-            } else if (bmi < 25) {
-                category = "Normal weight";
-            } else if (bmi < 30) {
-                category = "Overweight";
-            } else {
-                category = "Obesity";
-            }
-
-            tvCategory.setText(category);
+            startActivity(intent);
 
         } catch (NumberFormatException e) {
             showError("Please enter valid numeric values.");
         }
     }
+
 
     // Display validation errors
     private void showError(String message) {

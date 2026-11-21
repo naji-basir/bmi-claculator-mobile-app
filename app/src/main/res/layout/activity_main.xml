@@ -122,45 +122,27 @@
             android:padding="12dp"
             android:backgroundTint="#2563EB" />
 
-        <!-- Result section -->
-        <TextView
-            android:id="@+id/tvResultTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Your BMI Result"
-            android:textColor="#172554"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_marginTop="36dp" />
-
-        <TextView
-            android:id="@+id/tvBMI"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="--"
-            android:textColor="#2563EB"
-            android:textSize="44sp"
-            android:textStyle="bold"
-            android:layout_marginTop="12dp" />
-
-        <TextView
-            android:id="@+id/tvCategory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Enter your details to begin"
-            android:textColor="#64748B"
-            android:textSize="16sp"
-            android:layout_marginTop="8dp" />
-
-        <!-- Validation range information -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Accepted ranges: Weight 3–150 kg | Height 30–220 cm"
-            android:textColor="#94A3B8"
-            android:textSize="12sp"
-            android:gravity="center"
-            android:layout_marginTop="32dp" />
+            android:text="About BMI"
+            android:textSize="14sp"
+            android:textColor="#64748B"
+            android:lineSpacingExtra="4dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="0dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="BMI (Body Mass Index) is a measure that uses your height and weight to estimate whether your body weight is within a healthy range."
+            android:textSize="14sp"
+            android:textColor="#64748B"
+            android:lineSpacingExtra="4dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="28dp" />
+
+
 
     </LinearLayout>
 
